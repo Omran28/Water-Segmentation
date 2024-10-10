@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            color: white;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #2b2e4a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #f9d423;
+        }
+        .image-box {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .image-box img {
+            border: 4px solid #f9d423;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .image-box div {
+            text-align: center;
+            width: 45%;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f9d423;
+            color: #2b2e4a;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="image-box">
+            <div>
+                <h2>Uploaded Image</h2>
+                {% if uploaded_image %}
+                    <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Uploaded Image" style="max-width:100%; height:auto;">
+                {% else %}
+                    <p>No image uploaded.</p>
+                {% endif %}
+            </div>
+            <div>
+                <h2>Predicted Mask</h2>
+                {% if predicted_image %}
+                    <img src="{{ url_for('static', filename='uploads/' + predicted_image) }}" alt="Predicted Mask" style="max-width:100%; height:auto;">
+                {% else %}
+                    <p>No prediction available.</p>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <a href="{{ url_for('upload_file') }}">Upload another image</a>
+    </div>
+</body>
+</html>
