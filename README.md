@@ -14,3 +14,5 @@
 # Visualization Tools
 * Confusion Matrix: Dive deep into model performance with clear, actionable metrics. 📈
 * Classification Report: Get a thorough snapshot of the model’s accuracy and effectiveness. 📋
+
+run: python app.py
